@@ -25,7 +25,7 @@
                   symbolName = "-[SquareCamViewController setPredictionValues:]"
                   moduleName = "LearningExample"
                   urlString = "file:///Users/songchengkui/chinaso/DeepBeliefSDK/examples/LearningExample/SquareCamViewController.m"
-                  timestampString = "449548486.620738"
+                  timestampString = "449551465.817624"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "806"
@@ -39,7 +39,7 @@
                   symbolName = "-[SquareCamViewController setPredictionValues:]"
                   moduleName = "LearningExample"
                   urlString = "file:///Users/songchengkui/chinaso/DeepBeliefSDK/examples/LearningExample/SquareCamViewController.m"
-                  timestampString = "449548486.622133"
+                  timestampString = "449551465.81794"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "806"
@@ -47,6 +47,22 @@
                   offsetFromSymbolStart = "1458">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SettingViewController.m"
+            timestampString = "449549220.780381"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-saveSetting:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

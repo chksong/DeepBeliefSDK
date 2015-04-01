@@ -34,12 +34,17 @@
 }
 */
 
+
+
+
 - (void)dealloc {
     
     [_textLabelName release];
     [_textLabelServerIP release];
     [super dealloc];
 }
+
+
 
 - (IBAction)cancel:(id)sender {
     
@@ -50,5 +55,19 @@
 
 
 - (IBAction)saveSetting:(id)sender {
+    
+    NSString *  strLabelName = self.textLabelName.text ;
+    if ([strLabelName length] <1 ) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"警告" message:@"保存的训练文件名称为空" delegate:nil cancelButtonTitle:@"" otherButtonTitles:nil, nil] ;
+        
+        [alertView show];
+        
+        return ;
+    }
+    
 }
+
+
+
 @end

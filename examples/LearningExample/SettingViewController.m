@@ -7,6 +7,7 @@
 //
 
 #import "SettingViewController.h"
+#import "SquareCamViewController.h"
 
 @interface SettingViewController ()
 
@@ -17,6 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    self.textLabelServerIP.text = [userDefaults objectForKey:@"serverip"] ;
+    self.textLabelName.text     = [userDefaults objectForKey:@"labelname"] ;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,18 +61,59 @@
     }];
 }
 
+-(BOOL)isValidatIP:(NSString *)ipAddress{
+    
+    NSString  *urlRegEx =@"^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
+    
+    NSPredicate *urlTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", urlRegEx];
+    return [urlTest evaluateWithObject:ipAddress];
+    
+}
+
 
 - (IBAction)saveSetting:(id)sender {
     
-    NSString *  strLabelName = self.textLabelName.text ;
-    if ([strLabelName length] <1 ) {
+ 
+    
+    
+    NSString* strServerIP = self.textLabelServerIP.text ;
+    if ( FALSE == [self isValidatIP:strServerIP]) {
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"警告" message:@"保存的训练文件名称为空" delegate:nil cancelButtonTitle:@"" otherButtonTitles:nil, nil] ;
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"警告" message:@"请输入有效IP的地址" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] ;
         
         [alertView show];
         
         return ;
     }
+    
+    NSString *  strLabelName = self.textLabelName.text ;
+    if ([strLabelName length] <1 ) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"警告" message:@"保存的训练文件名称为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] ;
+        
+        [alertView show];
+        
+        return ;
+    }
+    
+    //保存配置
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:strServerIP forKey:@"serverip"] ;
+    [userDefaults setObject:strLabelName forKey:@"labelname"] ;
+    [userDefaults synchronize] ;
+    
+    SquareCamViewController* scvt = (SquareCamViewController*) self.delegate ;
+    
+    scvt.strServerIP = strServerIP ;
+    scvt.strPredictionsName = strLabelName ;
+    
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        ;
+    }];
     
 }
 

@@ -638,6 +638,8 @@ bail:
 	[faceDetector release];
 	[square release];
   [_mainButton release];
+   
+    [_btnUpload release];
 	[super dealloc];
 }
 
@@ -698,6 +700,13 @@ bail:
   labelLayers = [[NSMutableArray alloc] init];
 
   oldPredictionValues = [[NSMutableDictionary alloc] init];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    self.strServerIP = [userDefaults objectForKey:@"serverip"] ;
+    self.strPredictionsName     = [userDefaults objectForKey:@"labelname"] ;
+    
+    [self.btnUpload setHidden:TRUE];
 }
 
 - (void)viewDidUnload
@@ -715,6 +724,7 @@ bail:
 
 - (void)viewDidAppear:(BOOL)animated
 {
+      NSLog(@"viewDidAppear............\n") ;
     [super viewDidAppear:animated];
 }
 
@@ -960,6 +970,8 @@ bail:
 }
 
 - (void) triggerNextState {
+
+    [self.btnUpload setHidden:TRUE];
   switch (predictionState) {
     case eWaiting: {
       [self startPositiveLearning];
@@ -1012,6 +1024,9 @@ bail:
 }
 
 - (void) startPredicting {
+    
+   [self.btnUpload setHidden:FALSE];
+    
   if (predictor != NULL) {
     jpcnn_destroy_predictor(predictor);
   }
@@ -1019,7 +1034,9 @@ bail:
   fprintf(stderr, "------------- SVM File output - copy lines below ------------\n");
   jpcnn_print_predictor(predictor);
   fprintf(stderr, "------------- end of SVM File output - copy lines above ------------\n");
-  predictionState = ePredicting;
+  
+
+  predictionState = eWaiting;
 
   [self updateInfoDisplay];
 
@@ -1212,5 +1229,18 @@ bail:
     [self performSegueWithIdentifier:@"settingsegue" sender:self];
 }
 
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender  {
+    
+    UIViewController *dest = segue.destinationViewController;
 
+    if ([segue.identifier  isEqualToString:@"settingsegue"]) {
+        [dest setValue:self forKey:@"delegate"] ;
+    }
+    
+}
+
+
+- (IBAction)upLoadFile:(id)sender {
+    NSLog(@"upLoadFile ............") ;
+}
 @end

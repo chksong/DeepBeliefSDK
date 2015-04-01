@@ -46,10 +46,22 @@
                                     <action selector="settingWindow:" destination="2" eventType="touchUpInside" id="vFZ-6O-8Lh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TDY-ME-Ehf">
+                                <rect key="frame" x="0.0" y="435" width="58" height="68.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="上传">
+                                    <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="upLoadFile:" destination="2" eventType="touchUpInside" id="ZFW-OM-gxH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                     </view>
                     <connections>
+                        <outlet property="btnUpload" destination="TDY-ME-Ehf" id="adf-ZE-7v5"/>
                         <outlet property="mainButton" destination="iD8-yH-eWH" id="IK8-UV-IU5"/>
                         <outlet property="previewView" destination="12" id="13"/>
                         <segue destination="IF8-Ja-jmt" kind="modal" identifier="settingsegue" id="jgu-4I-Dyw"/>

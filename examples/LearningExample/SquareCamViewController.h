@@ -95,4 +95,12 @@
 - (IBAction)toggleFaceDetection:(id)sender;
 - (IBAction)settingWindow:(id)sender;
 
+@property (retain ,nonatomic) NSString*  strServerIP  ;
+@property (retain ,nonatomic) NSString*  strPredictionsName ;
+
+
+- (IBAction)upLoadFile:(id)sender;
+;
+@property (retain, nonatomic) IBOutlet UIButton *btnUpload;
+
 @end

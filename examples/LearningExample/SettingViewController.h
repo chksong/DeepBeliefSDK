@@ -16,4 +16,6 @@
 
 @property (retain, nonatomic) IBOutlet UITextField *textLabelServerIP;
 
+@property (retain , nonatomic) id delegate ;
+
 @end

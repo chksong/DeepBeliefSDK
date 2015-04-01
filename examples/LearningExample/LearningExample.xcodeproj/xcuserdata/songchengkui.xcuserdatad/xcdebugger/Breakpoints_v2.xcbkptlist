@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SquareCamViewController.m"
-            timestampString = "449548009.890083"
+            timestampString = "449571351.351365"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "806"
-            endingLineNumber = "806"
+            startingLineNumber = "816"
+            endingLineNumber = "816"
             landmarkName = "-setPredictionValues:"
             landmarkType = "5">
             <Locations>
@@ -25,11 +25,11 @@
                   symbolName = "-[SquareCamViewController setPredictionValues:]"
                   moduleName = "LearningExample"
                   urlString = "file:///Users/songchengkui/chinaso/DeepBeliefSDK/examples/LearningExample/SquareCamViewController.m"
-                  timestampString = "449551465.817624"
+                  timestampString = "449574473.87943"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "806"
-                  endingLineNumber = "806"
+                  startingLineNumber = "816"
+                  endingLineNumber = "816"
                   offsetFromSymbolStart = "1362">
                </Location>
                <Location
@@ -39,30 +39,14 @@
                   symbolName = "-[SquareCamViewController setPredictionValues:]"
                   moduleName = "LearningExample"
                   urlString = "file:///Users/songchengkui/chinaso/DeepBeliefSDK/examples/LearningExample/SquareCamViewController.m"
-                  timestampString = "449551465.81794"
+                  timestampString = "449574473.879776"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "806"
-                  endingLineNumber = "806"
+                  startingLineNumber = "816"
+                  endingLineNumber = "816"
                   offsetFromSymbolStart = "1458">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SettingViewController.m"
-            timestampString = "449549220.780381"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-saveSetting:"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

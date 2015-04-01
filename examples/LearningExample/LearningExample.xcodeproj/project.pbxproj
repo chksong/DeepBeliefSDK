@@ -19,6 +19,7 @@
 		592FF92618EE240200C164F8 /* SquareCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592FF92418EE240200C164F8 /* SquareCamViewController.m */; };
 		5958E8FC18EF86670047B97B /* 32093__jbum__jsyd-ping.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5958E8FA18EF86670047B97B /* 32093__jbum__jsyd-ping.wav */; };
 		59CC3BDB1914118B0046B191 /* DeepBelief.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 592FF8F618ECBDF700C164F8 /* DeepBelief.framework */; };
+		B01274241ACB8E4E00A82FB9 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B01274231ACB8E4E00A82FB9 /* SettingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		592FF92318EE240200C164F8 /* SquareCamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareCamViewController.h; sourceTree = SOURCE_ROOT; };
 		592FF92418EE240200C164F8 /* SquareCamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareCamViewController.m; sourceTree = SOURCE_ROOT; };
 		5958E8FB18EF86670047B97B /* en */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = en; path = "32093__jbum__jsyd-ping.wav"; sourceTree = "<group>"; };
+		B01274221ACB8E4E00A82FB9 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = SOURCE_ROOT; };
+		B01274231ACB8E4E00A82FB9 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,8 @@
 		592FF8BE18ECBD7600C164F8 /* LearningExample */ = {
 			isa = PBXGroup;
 			children = (
+				B01274221ACB8E4E00A82FB9 /* SettingViewController.h */,
+				B01274231ACB8E4E00A82FB9 /* SettingViewController.m */,
 				592FF90718EDD0DA00C164F8 /* en.lproj */,
 				592FF90318ECCB8300C164F8 /* Info.plist */,
 				592FF90518ECCD1E00C164F8 /* jetpac.ntwk */,
@@ -179,6 +184,7 @@
 				592FF90218ECC66200C164F8 /* main.mm in Sources */,
 				592FF92618EE240200C164F8 /* SquareCamViewController.m in Sources */,
 				592FF92518EE240200C164F8 /* SquareCamAppDelegate.m in Sources */,
+				B01274241ACB8E4E00A82FB9 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SquareCamViewController.m"
+            timestampString = "449548009.890083"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "806"
+            endingLineNumber = "806"
+            landmarkName = "-setPredictionValues:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SquareCamViewController setPredictionValues:]"
+                  moduleName = "LearningExample"
+                  urlString = "file:///Users/songchengkui/chinaso/DeepBeliefSDK/examples/LearningExample/SquareCamViewController.m"
+                  timestampString = "449548486.620738"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "806"
+                  endingLineNumber = "806"
+                  offsetFromSymbolStart = "1362">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SquareCamViewController setPredictionValues:]"
+                  moduleName = "LearningExample"
+                  urlString = "file:///Users/songchengkui/chinaso/DeepBeliefSDK/examples/LearningExample/SquareCamViewController.m"
+                  timestampString = "449548486.622133"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "806"
+                  endingLineNumber = "806"
+                  offsetFromSymbolStart = "1458">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

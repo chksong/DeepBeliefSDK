@@ -429,6 +429,8 @@ bail:
 	}
 }
 
+
+
 // find where the video box is positioned within the preview layer based on the video size and gravity
 + (CGRect)videoPreviewBoxForGravity:(NSString *)gravity frameSize:(CGSize)frameSize apertureSize:(CGSize)apertureSize
 {
@@ -1204,5 +1206,11 @@ bail:
     &_soundFileObject
   );
 }
+
+
+- (IBAction)settingWindow:(id)sender {
+    [self performSegueWithIdentifier:@"settingsegue" sender:self];
+}
+
 
 @end

@@ -54,6 +54,8 @@
 
 #import <DeepBelief/DeepBelief.h>
 
+#import <AFNetworking.h>
+
 #pragma mark-
 
 const int kPositivePredictionTotal = 100;
@@ -706,7 +708,7 @@ bail:
     self.strServerIP = [userDefaults objectForKey:@"serverip"] ;
     self.strPredictionsName     = [userDefaults objectForKey:@"labelname"] ;
     
-    [self.btnUpload setHidden:TRUE];
+    [self.btnUpload setHidden:FALSE];
 }
 
 - (void)viewDidUnload
@@ -1023,25 +1025,6 @@ bail:
   [self updateInfoDisplay];
 }
 
-- (void) startPredicting {
-    
-   [self.btnUpload setHidden:FALSE];
-    
-  if (predictor != NULL) {
-    jpcnn_destroy_predictor(predictor);
-  }
-  predictor = jpcnn_create_predictor_from_trainer(trainer);
-  fprintf(stderr, "------------- SVM File output - copy lines below ------------\n");
-  jpcnn_print_predictor(predictor);
-  fprintf(stderr, "------------- end of SVM File output - copy lines above ------------\n");
-  
-
-  predictionState = eWaiting;
-
-  [self updateInfoDisplay];
-
-  self.lastFrameTime = [NSDate date];
-}
 
 - (void) restartLearning {
   [self startPositiveLearning];
@@ -1239,8 +1222,150 @@ bail:
     
 }
 
+-(BOOL)isValidatIP:(NSString *)ipAddress{
+    
+    NSString  *urlRegEx =@"^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5]):[0-9]{2,10}$";
+    
+    NSString  *urlRegEx_2=@"^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
+    
+    NSPredicate *urlTest2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", urlRegEx_2];
+    NSPredicate *urlTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", urlRegEx];
+    
+    return [urlTest evaluateWithObject:ipAddress] | [urlTest2 evaluateWithObject:ipAddress];
+    
+}
+
+
 
 - (IBAction)upLoadFile:(id)sender {
     NSLog(@"upLoadFile ............") ;
+    
+
+    if ( FALSE == [self isValidatIP:self.strServerIP]) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"警告" message:@"请设置有效IP的地址" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] ;
+        
+        [alertView show];
+        
+        return ;
+    }
+    
+  
+    if ([self.strPredictionsName length] <1 ) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"警告" message:@"请设置有效训练文件名称" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] ;
+        
+        [alertView show];
+        
+        return ;
+    }
+    
+    
+    
+    
+ 
+    
+    
+    NSString *tmpFileName=[NSTemporaryDirectory() stringByAppendingPathComponent: self.strPredictionsName]; //fileName
+    
+    NSData *adata = [[NSData alloc ]initWithContentsOfFile:tmpFileName ] ;
+    NSString *aString = [[NSString alloc] initWithData:adata encoding:NSUTF8StringEncoding];
+    
+    NSDictionary *parameters = @{@"label": self.strPredictionsName , @"txt" :aString};
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  //  manager.requestSerializer = [AFJSONRequestSerializer serializer];
+   // manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    NSString *str_serverip_Url =   [[NSString alloc] initWithFormat:@"http://%@/learning", self.strServerIP ];
+    [manager POST:str_serverip_Url parameters:parameters
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", operation.response);
+        [ self displayErrorOnMainQueue:nil withMessage:@"upload successfully" ];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@ --[%@]", error, operation.response.allHeaderFields);
+        [ self displayErrorOnMainQueue:error withMessage:@"upload 失败" ];
+      
+       // manager
+    }];
+    
+    [adata release];
+    [aString release] ;
+    [str_serverip_Url release] ;
+    
+
+
+ //   NSURL *filePath = [NSURL fileURLWithPath:tmpFileName];
+//    [manager POST:@"http://192.168.70.252:9090/uploadfile" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//    //    [formData appendPartWithFileURL:filePath name:@"txt" error:nil];
+//        [formData appendPartWithFileURL:filePath name:@"txt" fileName:self.strPredictionsName mimeType:@"multipart/form-data" error:nil] ;
+//        
+//    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSLog(@"Success: %@", responseObject);
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"Error: %@", error);
+//    }];
+    
+//    NSDictionary *parameters = @{@"tag": self.strPredictionsName};
+//    
+//    [manager POST:@"http://192.168.65.57:9090/uploadfile" parameters:parameters
+//        constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//        
+//        [formData appendPartWithFormData:[self.strPredictionsName dataUsingEncoding:NSUTF8StringEncoding] name:@"tag"] ;
+//        //    [formData appendPartWithFileURL:filePath name:@"txt" error:nil];
+//        [formData appendPartWithFileURL:filePath name:@"txt" fileName:self.strPredictionsName mimeType:@"multipart/form-data" error:nil] ;
+//        
+//    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSLog(@"Success: %@", responseObject);
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"Error: %@", error);
+//    }];
+
 }
+
+
+
+- (void) startPredicting {
+    [self.btnUpload setHidden:FALSE];
+    if (predictor != NULL) {
+        jpcnn_destroy_predictor(predictor);
+    }
+    
+    predictor = jpcnn_create_predictor_from_trainer(trainer);
+    fprintf(stderr, "------------- SVM File output - copy lines below ------------\n");
+    //jpcnn_print_predictor(predictor);
+    
+    
+    
+    if ( [self.strPredictionsName length] < 1 ) {
+        [ self displayErrorOnMainQueue:nil withMessage:@"训练标签为空" ];
+        NSLog(@"write 训练 is badly") ;
+    }
+    else {
+        //        NSString *sandboxPath = NSHomeDirectory()();
+        //        NSString *documentPath = [sandboxPath
+        //                                  stringByAppendingPathComponent:@"Documents"];
+        
+        NSString *tmpFileName=[NSTemporaryDirectory() stringByAppendingPathComponent: self.strPredictionsName]; //fileName
+        jpcnn_save_predictor( [tmpFileName UTF8String] ,predictor);
+        NSLog(@"write 训练 is okay") ;
+    }
+    
+    
+    fprintf(stderr, "------------- end of SVM File output - copy lines above ------------\n");
+    
+    predictionState = eWaiting;
+    
+    [self updateInfoDisplay];
+    self.lastFrameTime = [NSDate date];
+}
+
 @end

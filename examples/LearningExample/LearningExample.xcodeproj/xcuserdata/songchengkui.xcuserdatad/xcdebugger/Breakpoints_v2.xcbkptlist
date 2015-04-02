@@ -17,36 +17,6 @@
             endingLineNumber = "816"
             landmarkName = "-setPredictionValues:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SquareCamViewController setPredictionValues:]"
-                  moduleName = "LearningExample"
-                  urlString = "file:///Users/songchengkui/chinaso/DeepBeliefSDK/examples/LearningExample/SquareCamViewController.m"
-                  timestampString = "449574473.87943"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "816"
-                  endingLineNumber = "816"
-                  offsetFromSymbolStart = "1362">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SquareCamViewController setPredictionValues:]"
-                  moduleName = "LearningExample"
-                  urlString = "file:///Users/songchengkui/chinaso/DeepBeliefSDK/examples/LearningExample/SquareCamViewController.m"
-                  timestampString = "449574473.879776"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "816"
-                  endingLineNumber = "816"
-                  offsetFromSymbolStart = "1458">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

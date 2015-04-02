@@ -66,10 +66,17 @@
     NSString  *urlRegEx =@"^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
     "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
     "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5]):[0-9]{2,10}$";
+    
+    NSString  *urlRegEx_2=@"^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
     "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
     
+    NSPredicate *urlTest2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", urlRegEx_2];
     NSPredicate *urlTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", urlRegEx];
-    return [urlTest evaluateWithObject:ipAddress];
+    
+    return [urlTest evaluateWithObject:ipAddress] | [urlTest2 evaluateWithObject:ipAddress];
     
 }
 

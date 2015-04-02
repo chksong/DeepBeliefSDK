@@ -1280,7 +1280,7 @@ bail:
     NSDictionary *parameters = @{@"label": self.strPredictionsName , @"txt" :aString};
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-  //  manager.requestSerializer = [AFJSONRequestSerializer serializer];
+   //  manager.requestSerializer = [AFJSONRequestSerializer serializer];
    // manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
